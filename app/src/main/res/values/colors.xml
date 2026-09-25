@@ -1,0 +1,8 @@
+<resources>
+    <color name="av_bg">#070A12</color>
+    <color name="av_surface">#0F1422</color>
+    <color name="av_surface_2">#151B2D</color>
+    <color name="av_purple">#8B5CF6</color>
+    <color name="av_pink">#EC4899</color>
+    <color name="av_text">#F8FAFC</color>
+</resources>
