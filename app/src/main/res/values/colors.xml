@@ -1,0 +1,11 @@
+<resources>
+    <color name="bg">#090B12</color>
+    <color name="panel">#111522</color>
+    <color name="panel2">#171C2B</color>
+    <color name="accent">#7C5CFF</color>
+    <color name="accent2">#23C4FF</color>
+    <color name="text">#F4F6FB</color>
+    <color name="muted">#98A2B3</color>
+    <color name="success">#46D39A</color>
+    <color name="danger">#FF6B7A</color>
+</resources>
