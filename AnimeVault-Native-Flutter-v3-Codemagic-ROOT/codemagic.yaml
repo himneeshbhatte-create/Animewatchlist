@@ -1,0 +1,41 @@
+workflows:
+  android-debug:
+    name: AnimeVault Android APK
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+
+    environment:
+      flutter: stable
+
+    working_directory: AnimeVault-Native-Flutter-v3-Codemagic-ROOT
+
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+
+      - name: Generate Android platform if needed
+        script: |
+          if [ ! -d "android" ]; then
+            flutter create --platforms=android --project-name animevault .
+          fi
+
+      - name: Build debug APK
+        script: |
+          flutter build apk --debug
+
+      - name: Collect APK
+        script: |
+          set -e
+          echo "Searching for generated APK..."
+          find "$CM_BUILD_DIR/AnimeVault-Native-Flutter-v3-Codemagic-ROOT/build" -type f -name "*.apk" -print
+          mkdir -p "$CM_BUILD_OUTPUT_DIR"
+          APK_PATH=$(find "$CM_BUILD_DIR/AnimeVault-Native-Flutter-v3-Codemagic-ROOT/build" -type f -name "app-debug.apk" | head -n 1)
+          if [ -z "$APK_PATH" ]; then
+            echo "ERROR: app-debug.apk was not found"
+            exit 1
+          fi
+          cp "$APK_PATH" "$CM_BUILD_OUTPUT_DIR/AnimeVault-debug.apk"
+          echo "APK copied to: $CM_BUILD_OUTPUT_DIR/AnimeVault-debug.apk"
+
+    artifacts:
+      - $CM_BUILD_OUTPUT_DIR/AnimeVault-debug.apk
