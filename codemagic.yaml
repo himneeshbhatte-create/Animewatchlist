@@ -1,7 +1,8 @@
 workflows:
   android-debug:
     name: AnimeVault Android APK
-    max_build_duration: 30
+    instance_type: mac_mini_m2
+    max_build_duration: 60
 
     environment:
       flutter: stable
@@ -22,4 +23,4 @@ workflows:
         script: flutter build apk --debug
 
     artifacts:
-      - AnimeVault-Native-Flutter-v3-Codemagic-ROOT/build/app/outputs/flutter-apk/*.apk
+      - AnimeVault-Native-Flutter-v3-Codemagic-ROOT/build/app/outputs/flutter-apk/*.apk/app/outputs/flutter-apk/*.apk
