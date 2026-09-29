@@ -1,0 +1,25 @@
+workflows:
+  android-debug:
+    name: AnimeVault Android APK
+    max_build_duration: 30
+
+    environment:
+      flutter: stable
+
+    working_directory: AnimeVault-Native-Flutter-v3-Codemagic-ROOT
+
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+
+      - name: Generate Android platform if needed
+        script: |
+          if [ ! -d "android" ]; then
+            flutter create --platforms=android --project-name animevault .
+          fi
+
+      - name: Build debug APK
+        script: flutter build apk --debug
+
+    artifacts:
+      - AnimeVault-Native-Flutter-v3-Codemagic-ROOT/build/app/outputs/flutter-apk/*.apk
