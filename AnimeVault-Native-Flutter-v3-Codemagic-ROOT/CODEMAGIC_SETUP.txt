@@ -1,0 +1,11 @@
+ANIMEVAULT — CODEMAGIC APK BUILD
+
+This project is configured for Codemagic.
+
+The codemagic.yaml workflow automatically creates the Android platform folder if it is missing,
+then runs flutter pub get and builds a debug APK.
+
+Build artifact:
+build/app/outputs/flutter-apk/*.apk
+
+Do not upload build/, .dart_tool/, or other generated Flutter folders to Git.

@@ -1,0 +1,13 @@
+AnimeVault Native Flutter build notes
+
+This project is intentionally Flutter-native. It is not a webview wrapper.
+
+The source is designed for a cloud Flutter builder that detects pubspec.yaml.
+
+Persistent provider behavior:
+- Eight provider URL slots are stored in SharedPreferences.
+- First launch seeds the seven normal providers from the uploaded web app and leaves slot 8 as Custom Provider.
+- Saving providers writes the URLs to local device storage.
+- Reopening the app reloads those URLs automatically.
+
+The actual APK must be compiled by a Flutter-capable build environment.
